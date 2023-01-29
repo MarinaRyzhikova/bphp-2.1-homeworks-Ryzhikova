@@ -12,8 +12,8 @@ $operations = [
     OPERATION_PRINT => OPERATION_PRINT . '. Отобразить список покупок.',
 ];
 
-$items = ["ppp", "yyy", "kkk"];
-$operationList = checkingGoods($operations, $items);
+$items = [];
+
 
 function inputNum() : string
 {
@@ -29,13 +29,14 @@ function shoppingList(array $items) : string
 }// выводит список товаров|пуст
 function checkingGoods(array $operations, array $items) : string
 {
-    if (count($items)) {
+    if ((count($items))) {
         return implode(PHP_EOL, $operations) . PHP_EOL . '> ';
     } else {
         unset($operations[2]);
         return implode(PHP_EOL, $operations) . PHP_EOL . '> ';
     }
 } // должна проверять список покупок и выводить список операций
+$operationList = checkingGoods($operations, $items);
 function deleteProduct ($itemName,&$items){
     if (in_array($itemName, $items, true) === false){
         return 'Нет такого товара:' . PHP_EOL . '> ';
@@ -48,12 +49,9 @@ function deleteProduct ($itemName,&$items){
 } // удаляет товары
 
 
-
-
 do {
 //system('clear');
     system('cls'); // windows
-
     echo shoppingList($items) . $operationList; // вывели список покупок + список операций
 
     $operationNumber = inputNum();
@@ -84,6 +82,7 @@ do {
 
             echo '!!! Неизвестный номер операции, повторите попытку.' . PHP_EOL;
     }
+
 } while ($operationNumber > 0);
 
 echo 'Программа завершена' . PHP_EOL;
