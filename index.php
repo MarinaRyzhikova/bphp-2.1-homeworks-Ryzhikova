@@ -12,7 +12,7 @@ $operations = [
     OPERATION_PRINT => OPERATION_PRINT . '. Отобразить список покупок.',
 ];
 
-$items = [];
+$items = ['jhkj'];
 
 
 function inputNum() : string
@@ -24,6 +24,7 @@ function shoppingList(array $items) : string
     if (count($items)) {
         return 'Ваш список покупок: ' . "\n" . implode("\n", $items) . "\n" . 'Выберите операцию для выполнения: ' . PHP_EOL;
     } else {
+
         return 'Ваш список покупок пуст.' . "\n" . 'Выберите операцию для выполнения: ' . PHP_EOL;
     }
 }// выводит список товаров|пуст
@@ -32,11 +33,13 @@ function checkingGoods(array $operations, array $items) : string
     if ((count($items))) {
         return implode(PHP_EOL, $operations) . PHP_EOL . '> ';
     } else {
-        unset($operations[2]);
-        return implode(PHP_EOL, $operations) . PHP_EOL . '> ';
+        return $operations[0] . PHP_EOL . $operations[1]. PHP_EOL . $operations[3]. PHP_EOL;
     }
 } // должна проверять список покупок и выводить список операций
+
+
 $operationList = checkingGoods($operations, $items);
+
 function deleteProduct ($itemName,&$items){
     if (in_array($itemName, $items, true) === false){
         return 'Нет такого товара:' . PHP_EOL . '> ';
@@ -86,4 +89,5 @@ do {
 } while ($operationNumber > 0);
 
 echo 'Программа завершена' . PHP_EOL;
+
 
